@@ -1,0 +1,39 @@
+[[device-filter]]
+ref = "Any Keyboard"
+name = "Virtual Keyboard"
+kind = "keyboard"
+exclusive = true
+
+[[virtual-device]]
+ref = "Virtual Keyboard"
+preset = "keyboard"
+vendor = 0x16C0
+product = 0x27DC
+
+[[script]]
+device = "Any Keyboard"
+script = """
+let kbd = "Virtual Keyboard";
+
+if event.key == Key_SysRq {
+    send_key(kbd, Key_Digit7, event.press);
+} else if event.key == Key_ScrollLock {
+    send_key(kbd, Key_Digit8, event.press);
+} else if event.key == Key_Pause {
+    send_key(kbd, Key_Digit9, event.press);
+} else if event.key == Key_Insert {
+    send_key(kbd, Key_Digit4, event.press);
+} else if event.key == Key_Home {
+    send_key(kbd, Key_Digit5, event.press);
+} else if event.key == Key_PageUp {
+    send_key(kbd, Key_Digit6, event.press);
+} else if event.key == Key_Delete {
+    send_key(kbd, Key_Digit1, event.press);
+} else if event.key == Key_End {
+    send_key(kbd, Key_Digit2, event.press);
+} else if event.key == Key_PageDown {
+    send_key(kbd, Key_Digit3, event.press);
+} else {
+    send_to(kbd);
+}
+"""

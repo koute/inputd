@@ -1,0 +1,19 @@
+[package]
+name = "inputd"
+version = "0.1.0"
+authors = ["Jan Bujak <j@exia.io>"]
+edition = "2018"
+
+[dependencies]
+structopt = "0.3"
+nix = "0.17"
+indexmap = "1"
+toml = "0.5"
+log = "0.4"
+env_logger = "0.7"
+humantime = "1"
+udev = "0.4"
+libc = "0.2"
+parking_lot = "0.12"
+rhai = { version = "1.7", features = ["sync", "only_i32", "no_module"] }
+linux-input = "0.1"
