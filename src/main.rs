@@ -837,6 +837,7 @@ impl ScriptInstance {
 
     fn eval( &self ) {
         let mut scope = self.scope.lock();
+        let scope_length = scope.len();
 
         {
             let mut script_state = self.script_state.lock();
@@ -847,7 +848,6 @@ impl ScriptInstance {
         }
 
         // scope.push( "state", user_state );
-        let scope_length = scope.len();
         let result = self.engine.eval_ast_with_scope::< rhai::Dynamic >( &mut scope, &self.script.ast );
         scope.rewind( scope_length );
 
