@@ -1207,12 +1207,20 @@ fn set_signal_handler() {
     }
 }
 
+extern "C" {
+    fn mlockall() -> i32;
+}
+
 fn main() {
     if std::env::var( "RUST_LOG" ).is_err() {
         std::env::set_var( "RUST_LOG", "info" );
     }
 
     env_logger::init();
+
+    if unsafe { mlockall() } != 0 {
+        log::warn!("`mlockall` failed");
+    }
 
     let opt = Opt::from_args();
     match opt {
